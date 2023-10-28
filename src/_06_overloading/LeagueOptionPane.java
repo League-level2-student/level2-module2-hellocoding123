@@ -1,12 +1,15 @@
 package _06_overloading;
 
 import java.io.IOException;
+import java.net.URL;
 
 import javax.imageio.ImageIO;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /*
  * Overloading is when we have multiple methods with the SAME name, but DIFFERENT parameters.
@@ -21,9 +24,23 @@ public class LeagueOptionPane {
 		// 1. Open example.png and make a GUI that looks like that
 		//    The message parameter is what we want to show on our pop-up
 		
+		JFrame frame = new JFrame();
+		JPanel panel = new JPanel();
+		JLabel label = new JLabel();
+		JTextField text = new JTextField();
 		
+		frame.add(panel);
+		panel.add(label);
+		panel.add(text);
+		
+		
+		
+		String image = "java.png";
+		
+		label = loadImage(image);
+
 		// 2. Uncomment the line of code below. It sets the location of our frame to the center of the screen
-		//frame.setLocationRelativeTo(null);
+		frame.setLocationRelativeTo(null);
 	}
 	
 	// 3. Call this method in the Runner class
