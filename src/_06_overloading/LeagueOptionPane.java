@@ -26,21 +26,25 @@ public class LeagueOptionPane {
 		
 		JFrame frame = new JFrame();
 		JPanel panel = new JPanel();
-		JLabel label = new JLabel();
-		JTextField text = new JTextField();
+		JLabel pic = new JLabel();
+		JLabel text = new JLabel();
 		
 		frame.add(panel);
-		panel.add(label);
+		panel.add(pic);
 		panel.add(text);
 		
+		String image = "league.png";
 		
+		pic.setIcon(loadImage(image));
 		
-		String image = "java.png";
-		
-		label = loadImage(image);
+		text.setText(message);
 
 		// 2. Uncomment the line of code below. It sets the location of our frame to the center of the screen
 		frame.setLocationRelativeTo(null);
+		
+		frame.pack();
+		
+		frame.setVisible(true);
 	}
 	
 	// 3. Call this method in the Runner class
@@ -48,13 +52,61 @@ public class LeagueOptionPane {
 
 	// 4. Create another showMessageDialog() method that lets us also choose the Message and Title 
 	//    2 String parameters (one for the message and one for the title)
-	
+	public static void showMessageDialog(String message, String title) {
+		
+		JFrame frame = new JFrame();
+		JPanel panel = new JPanel();
+		JLabel pic = new JLabel();
+		JLabel text = new JLabel();
+		
+		frame.add(panel);
+		panel.add(pic);
+		panel.add(text);
+		
+		String image = "java.png";
+		
+		pic.setIcon(loadImage(image));
+		
+		text.setText(message);
+		frame.setTitle(title);
+
+		// 2. Uncomment the line of code below. It sets the location of our frame to the center of the screen
+		frame.setLocationRelativeTo(null);
+		
+		frame.pack();
+		frame.setVisible(true);
+		
+	}
 	// 5. Call this method in the Runner class
 	
-	
+
 	// 6. Create another showMessageDialog() method that lets us choose the Message, Title, and Image
 	//    3 String parameters (one for the message, one for the title, and one for the fileName)
+	public static void showMessageDialog(String message, String title, String image) {
+			
+			JFrame frame = new JFrame();
+			JPanel panel = new JPanel();
+			JLabel pic = new JLabel();
+			JLabel text = new JLabel();
+			
+			frame.add(panel);
+			panel.add(pic);
+			panel.add(text);
+			
+			String img = image + ".png";
+			
+			pic.setIcon(loadImage(img));
+			
+			text.setText(message);
+			frame.setTitle(title);
 	
+			// 2. Uncomment the line of code below. It sets the location of our frame to the center of the screen
+			frame.setLocationRelativeTo(null);
+			
+			frame.pack();
+			frame.setVisible(true);
+			
+		}
 	// 7. Call this method in the Runner class
 	
 	// CHALLENGE: 
