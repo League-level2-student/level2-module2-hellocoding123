@@ -75,7 +75,7 @@ public class LeagueSnake extends PApplet {
     	fill(50,50, 50);
     	noStroke();
     	rect(headX,headY,20,20);
-    	
+    	manageTail();
     }
 
     void drawTail() {
@@ -93,7 +93,9 @@ public class LeagueSnake extends PApplet {
     	checkTailCollision();
     	drawTail();
         // After drawing the tail, add a new segment at the "start" of the tail and
-    	Segment tailSegment = new Segment(headX, headY);
+        tailX=headX;
+        tailY=headY;
+    	Segment tailSegment = new Segment(tailX, tailY);
     	tail.add(tailSegment);
         // remove the one at the "end"
     	tail.remove(1); //not finished <-----
@@ -103,7 +105,17 @@ public class LeagueSnake extends PApplet {
 
     void checkTailCollision() {
         // If the snake crosses its own tail, shrink the tail back to one segment
-        
+        for(int i = 0; i >= tail.length; i++) {
+            if(tailSegment(i).x == tailX && tailSegment(i).y == tailY) {
+                foodEaten=1;
+                tail.clear();
+                tailX=headX;
+                tailY=headY;
+        	    Segment tailSegment = new Segment(tailX, tailY);
+        	    tail.add(tailSegment);
+                break;
+            }    
+        }    
     }
 
     /*
@@ -159,6 +171,10 @@ public class LeagueSnake extends PApplet {
     	if(headX == foodX && headY == foodY) {
         // When the snake eats the food, its tail should grow and more
     		foodEaten += 1;
+            tailX=headX;
+            tailY=headY;
+            Segment tailSegment = new Segment(tailX, tailY);
+            tail.add(tailSegment);
         // food appear
     		foodX = ((int)random(25)*20);
         	foodY = ((int)random(25)*20);
