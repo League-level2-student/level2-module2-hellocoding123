@@ -72,7 +72,7 @@ public class LeagueSnake extends PApplet {
 
     void drawSnake() {
         // Draw the head of the snake followed by its tail
-    	fill(50,50, 50);
+    	fill(0,255, 0);
     	noStroke();
     	rect(headX,headY,20,20);
     	manageTail();
@@ -98,15 +98,15 @@ public class LeagueSnake extends PApplet {
     	Segment tailSegment = new Segment(tailX, tailY);
     	tail.add(tailSegment);
         // remove the one at the "end"
-    	tail.remove(1); //not finished <-----
+    	tail.remove(tail.size()); 
         // This produces the illusion of the snake tail moving.
 
     }
 
     void checkTailCollision() {
         // If the snake crosses its own tail, shrink the tail back to one segment
-        for(int i = 0; i >= tail.length; i++) {
-            if(tailSegment(i).x == tailX && tailSegment(i).y == tailY) {
+        for(int i = 0; i >= tail.size(); i++) {
+            if(tail.get(i).x == headX && tail.get(i).y == headY) {
                 foodEaten=1;
                 tail.clear();
                 tailX=headX;
